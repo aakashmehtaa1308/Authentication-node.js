@@ -1,0 +1,41 @@
+{
+  "name": "authentication-node",
+  "version": "1.0.0",
+  "description": "This is the repository for handling authentication, registration and permission in node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aakashmehtaa1308/Authentication-node.js.git"
+  },
+  "keywords": [
+    "Authentication",
+    "node.js",
+    "express",
+    "jwt"
+  ],
+  "author": "Aakash",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aakashmehtaa1308/Authentication-node.js/issues"
+  },
+  "homepage": "https://github.com/aakashmehtaa1308/Authentication-node.js#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.1",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-validator": "^6.14.0",
+    "jsonwebtoken": "^8.5.1",
+    "mariadb": "^2.5.5",
+    "sequelize": "^6.12.0-beta.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
