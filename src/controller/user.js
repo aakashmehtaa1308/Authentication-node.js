@@ -41,4 +41,38 @@ const signUp = (req, res, next) => {
   }
 };
 
-module.exports = { signUp };
+const getAllUsers = async (req,res,next) => {
+  try {
+    users = await User.findAll();
+    return res.status(200).json({
+      "message": "user fetched successfully",
+      "users": users
+    })
+  } catch(err) {
+    return res.status(400).json({
+      error: `users can be fetched. Please try again later sometime.`,
+      message: "Something went wrong",
+    });
+  }
+}
+
+const remove = async (req, res, next) => {
+  try {
+    const userId = req.body.userId;
+    const deletedUser = await User.destroy({
+      where: {
+        id: userId
+      }
+    });
+    res
+      .status(200)
+      .json({ message: `User deleted successfully.`, user: deletedUser });
+  } catch (error) {
+    res.status(400).json({
+      error: `User can't be deleted. Please try again after sometime.`,
+      message: `Something went wrong.`,
+    });
+  }
+};
+
+module.exports = { signUp, getAllUsers, remove };

@@ -4,11 +4,11 @@ const db = require("../database");
 const User = db.define(
   "User",
   {
-    first_name: { type: sequelize.STRING },
-    last_name: { type: sequelize.STRING },
-    username: { type: sequelize.STRING, unique: true },
-    email: { type: sequelize.STRING, unique: true },
-    password: { type: sequelize.STRING },
+    first_name: { type: sequelize.STRING, require: true },
+    last_name: { type: sequelize.STRING, require: true },
+    username: { type: sequelize.STRING, unique: true, require: true },
+    email: { type: sequelize.STRING, unique: true, require: true },
+    password: { type: sequelize.STRING, require:true },
   },
   { timestamps: true }
 );
