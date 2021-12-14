@@ -8,7 +8,7 @@ const User = db.define(
     last_name: { type: sequelize.STRING, require: true },
     username: { type: sequelize.STRING, unique: true, require: true },
     email: { type: sequelize.STRING, unique: true, require: true },
-    password: { type: sequelize.STRING, require:true },
+    password: { type: sequelize.STRING, require: true },
   },
   { timestamps: true }
 );
