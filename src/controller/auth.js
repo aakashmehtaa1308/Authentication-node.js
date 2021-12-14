@@ -65,4 +65,37 @@ const signOut = (req, res, next) => {
   }
 };
 
-module.exports = { signIn, signOut };
+const requiresSignIn = (req, res, next) => {
+  try {
+    const token = req.headers.authorization.split(" ")[1];
+    const user = jwt.verify(token, process.env.secret);
+    req.user = user;
+    next();
+  } catch (error) {
+    return res.status(404).json({
+      message: `Session Expired`,
+      error: `Your session expired. Sign-in again required.`,
+    });
+  }
+};
+
+const hasAuthorization = (req, res, next) => {
+  try {
+    let authorized =
+      req.user && req.body.userId.toString() == req.user._id.toString();
+    if (!authorized) {
+      return res.status(403).json({
+        message: "Authorization error",
+        error: `User is not Authorized to do this action.`,
+      });
+    }
+    next();
+  } catch (error) {
+    return res.status(400).json({
+      message: "Authorization error",
+      error: `Something went wrong. May be user is not authorized.`,
+    });
+  }
+};
+
+module.exports = { signIn, signOut, requiresSignIn, hasAuthorization };
